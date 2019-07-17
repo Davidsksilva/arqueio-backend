@@ -76,6 +76,45 @@ Outros campos atributos que podem ser inseridos é o array `collaborators` e `cl
 
 **GET:** Retorna array com os projetos onde o usuário é o dono.
 
+### `/projects/:id/tasks` 
+
+**POST:** Cria uma nova tarefa no projeto `id`. Exemplo de requisição no endpoint `/projects/1/tasks`:
+
+```json
+{
+	"title": "Atv 1",
+	"description": "Alguma descrição"
+}
+```
+
+Exemplo de resposta:
+
+```json
+{
+  "title": "Atv 1",
+  "description": "Alguma descrição",
+  "deadline": null,
+  "project_id": 1
+}
+```
+
+**GET:** Retorna um array com as tarefas do projeto `id`. Exemplo de resposta:
+
+```
+[
+  {
+    "id": 2,
+    "title": "Atv 1",
+    "description": "Alguma descrição",
+    "deadline": null,
+    "project": {
+      "id": 1,
+      "name": "Projeto teste"
+    }
+  }
+]
+```
+
 
 
 ### ``/files`` 

@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('posts', {
+    return queryInterface.createTable('tasks', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -15,19 +15,16 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: true,
       },
-      image_id: {
-        type: Sequelize.INTEGER,
-        references: { model: 'files', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
-        allowNull: 'true',
+      deadline: {
+        type: Sequelize.DATE,
+        allowNull: true,
       },
-      owner_id: {
+      project_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
+        references: { model: 'projects', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: 'true',
+        allowNull: 'false',
       },
       created_at: {
         type: Sequelize.DATE,
@@ -41,6 +38,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('posts');
+    return queryInterface.dropTable('tasks');
   },
 };

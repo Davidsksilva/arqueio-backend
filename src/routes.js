@@ -6,6 +6,7 @@ import ProjectController from './app/controllers/ProjectController';
 import FileController from './app/controllers/FileController';
 import PostController from './app/controllers/PostController';
 import GalleryController from './app/controllers/GaleryController';
+import TaskController from './app/controllers/TaskController';
 
 import authMiddleware from './app/middleware/auth';
 import multerConfig from './config/multer';
@@ -25,6 +26,8 @@ routes.post('/files', upload.single('file'), FileController.store);
 
 routes.use(authMiddleware);
 
+routes.post('/projects/:id/tasks', TaskController.store);
+routes.get('/projects/:id/tasks', TaskController.index);
 routes.post('/projects', ProjectController.store);
 routes.get('/projects', ProjectController.index);
 
