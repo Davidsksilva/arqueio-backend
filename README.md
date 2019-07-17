@@ -91,7 +91,7 @@ Outros campos atributos que podem ser inseridos é o array `collaborators` e `cl
 }
 ```
 
-O atributo `url` contém o hyperlink para a imagem, pronta para ser renderizada.
+O atributo `url` contém o hyperlink para a imagem, pronta para ser renderizada. Arquivos ficam salvos em `tmp/uploads`.
 
 ### ``/posts`` 
 
