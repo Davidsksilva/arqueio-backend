@@ -19,9 +19,9 @@ yarn dev
 
 Lista de endpoints e como utilizálos
 
-### /users: 
+### ``/users``: 
 
-**POST**: Cria o usuário. Corpo da requisição necessita o atributo *name*,*email* e *password*. Exemplo:
+**POST**: Cria o usuário. Corpo da requisição necessita o atributo `name`,`email` e `password`. Exemplo:
 
 ```
 {
@@ -33,9 +33,7 @@ Lista de endpoints e como utilizálos
 
 **OBS**:A senha é criptografada e apenas o hash éarmazenado no banco de dados.
 
-
-
-### /sessions: 
+### ``/sessions``
 
 **POST**: Login do usuário, onde a resposta contém um token de autenticação que deverá ser anexado ao header das próximas requisições. Exemplo de requisição:
 
@@ -61,9 +59,9 @@ Exemplo de resposta:
 
 **OBS:** o valor do atributo token é a chave de autenticação, dura 7 dias. Para adicioná-la ao header das proximas requisições, apenas criar um header do tipo `authorization: bearer <token>`.
 
-### /projects: 
+### ``/projects`` 
 
-**POST**: Cria o uprojeto. Corpo da requisição necessita o atributo *name* e *description*. Exemplo:
+**POST**: Cria um projeto. Corpo da requisição necessita o atributo `name` e `description`. Exemplo:
 
 ```
 {
@@ -72,6 +70,70 @@ Exemplo de resposta:
 }
 ```
 
-Outros campos atributos que podem ser inseridos é o array *collaborators* e *client_id*. O campo *owner_id* é atribuído automaticamente ao usuário que fez a requisição.
+Outros campos atributos que podem ser inseridos é o array `collaborators` e `client_id`. O campo *owner_id* é atribuído automaticamente ao usuário que fez a requisição.
 
 **GET:** Retorna array com os projetos onde o usuário é o dono.
+
+
+
+### ``/files`` 
+
+**POST**: Cria um arquivo para armazenamento. Corpo da requisição necessita ser do tipo multi form, com o campo `file` contendo o arquivo a ser enviado. Exemplo de retorno:
+
+```
+{
+  "url": "http://localhost:1337/files/d5aee6be84a8849cf28e7f2a5620f8c1.jpeg",
+  "id": 1,
+  "name": "paulo_freire.jpeg",
+  "path": "d5aee6be84a8849cf28e7f2a5620f8c1.jpeg",
+  "updatedAt": "2019-07-17T03:45:41.256Z",
+  "createdAt": "2019-07-17T03:45:41.256Z"
+}
+```
+
+O atributo `url` contém o hyperlink para a imagem, pronta para ser renderizada.
+
+### ``/posts`` 
+
+**POST**: Cria um post. Corpo da requisição necessita o atributo *title*. Exemplo:
+
+```
+{
+	"title": "Post 1",
+	"description": "Este é o primeiro post do Arqueio",
+	"image_id": 1
+}
+```
+
+
+
+Outro atributo que também pode ser inserido é `owner_id` que é o id do usuário dono do post.
+
+### ``/gallery`` 
+
+**GET**: Retorna um array com todos os posts da galeria. Contém paginação, 20 posts por página, para acessar páginas diferentes páginas, incluir o atributo ``page`` no header. Exemplo de resposta:
+
+```
+[
+  {
+    "id": 1,
+    "title": "Post 1",
+    "description": null,
+    "owner_id": null,
+    "image_id": 1,
+    "image": {
+      "url": "http://localhost:1337/files/d5aee6be84a8849cf28e7f2a5620f8c1.jpeg",
+      "name": "paulo_freire.jpeg",
+      "path": "d5aee6be84a8849cf28e7f2a5620f8c1.jpeg"
+    },
+    "owner": null
+  }
+]
+```
+
+
+
+
+
+
+
