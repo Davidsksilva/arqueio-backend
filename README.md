@@ -1,6 +1,8 @@
 # Arqueio Backend
 
-API utilizada para armazenar/resgatar informações do banco de dados. Também contém regra de negócio.
+API utilizada para armazenar/resgatar informações do banco de dados. Também contém regra de negócio. 
+
+Na pasta `etc` é possível encontrar um arquivo .json do workspace do [Insomnia](https://insomnia.rest/download/) que possui requisições pré definidas para o teste do backend.
 
 ## Requisitos
 
