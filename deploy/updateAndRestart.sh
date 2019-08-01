@@ -8,9 +8,8 @@ rm -rf backend/
 
 # clone the repo again
 echo "Cloning repo"
-TOKEN=$TOKEN
 
-git clone https://gitlab.com:${TOKEN}@gitlab.com/arqueio-developers/backend.git
+git clone https://gitlab.com:3b-yxvxY3J2UCu6aarz6@gitlab.com/arqueio-developers/backend.git
 
 #source the nvm file. In an non
 #If you are not using nvm, add the actual path like
