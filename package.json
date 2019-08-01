@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "lint": "eslint . --ignore-path .gitignore"
   },
   "dependencies": {
     "aws-sdk": "^2.502.0",
