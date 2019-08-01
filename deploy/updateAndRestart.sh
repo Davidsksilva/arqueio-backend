@@ -7,7 +7,7 @@ set -e
 rm -rf /home/ubuntu/arqueio/
 
 # clone the repo again
-git clone https://gitlab.com/arqueio-developers/backend.git
+git clone https://"$USERNAME":"$PASSWORD"gitlab.com/arqueio-developers/backend.git
 
 #source the nvm file. In an non
 #If you are not using nvm, add the actual path like
