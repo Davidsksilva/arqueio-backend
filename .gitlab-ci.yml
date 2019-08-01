@@ -1,0 +1,23 @@
+# Node docker image on which our code would run
+image: node:8.9.0
+
+#This command is run before all the jobs
+before_script:
+  - npm install
+
+stages:
+  - test
+
+# lint and test are two different jobs in the same stage.
+# This allows us to run these two in parallel and making build faster
+
+# Job 1:
+lint:
+  stage: test
+  script:
+    - npm run lint
+# Job 2:
+test:
+  stage: test
+  script:
+    - npm run test
