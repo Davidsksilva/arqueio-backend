@@ -4,7 +4,7 @@
 set -e
 
 # Delete the old repo
-rm -rf /home/ubuntu/arqueio/
+rm -rf /home/ec2-user/arqueio/
 
 # clone the repo again
 echo "Cloning repo"
@@ -13,7 +13,7 @@ git clone https://"$USERNAME":"$PASSWORD"gitlab.com/arqueio-developers/backend.g
 #source the nvm file. In an non
 #If you are not using nvm, add the actual path like
 # PATH=/home/ubuntu/node/bin:$PATH
-source /home/ubuntu/.nvm/nvm.sh
+source /home/ec2-user/.nvm/nvm.sh
 
 # stop the previous pm2
 pm2 kill
@@ -26,7 +26,7 @@ npm install pm2 -g
 # starting pm2 daemon
 pm2 status
 
-cd /home/ubuntu/arqueio
+cd /home/ec2-user/arqueio
 
 #install npm packages
 echo "Running npm install"
