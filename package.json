@@ -9,8 +9,7 @@
     "dist": "sucrase ./src -d ./dist --transforms imports",
     "start": "pm2 start src/server.js -i 0",
     "stop": "pm2 stop all",
-    "restart": "pm2 restart src/server.js",
-    "test": "NODE_ENV=test && lab -v -c"
+    "restart": "pm2 restart src/server.js"
   },
   "dependencies": {
     "aws-sdk": "^2.502.0",
