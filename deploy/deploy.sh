@@ -7,8 +7,6 @@ set -e
 eval $(ssh-agent -s)
 echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
 
-ls
-
 # ** Alternative approach
 #echo -e "$PRIVATE_KEY" > ~/.ssh/id_rsa
 #chmod 600 ~/.ssh/id_rsa
