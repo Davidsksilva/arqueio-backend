@@ -33,7 +33,7 @@ cd backend
 echo "Running npm install"
 npm install
 
-npm build
+yarn dist
 
 #Restart the node server
 npm start
