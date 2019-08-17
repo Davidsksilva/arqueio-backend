@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import Project from '../models/Project';
+import File from '../models/File';
 import User from '../models/User';
 
 class ProjectController {
@@ -10,14 +11,14 @@ class ProjectController {
       where: { owner_id: req.userId },
       limit: 10,
       offset: (page - 1) * 20,
-      attributes: ['id', 'name', 'description','cover_id'],
+      attributes: ['id', 'name', 'description', 'cover_id'],
       include: [
         {
           model: File,
           as: 'image',
           attributes: ['name', 'path'],
         },
-      ]
+      ],
     });
 
     return res.json(projects);
