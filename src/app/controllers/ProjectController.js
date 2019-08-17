@@ -10,7 +10,14 @@ class ProjectController {
       where: { owner_id: req.userId },
       limit: 10,
       offset: (page - 1) * 20,
-      attributes: ['id', 'name', 'description'],
+      attributes: ['id', 'name', 'description','cover_id'],
+      include: [
+        {
+          model: File,
+          as: 'image',
+          attributes: ['name', 'path'],
+        },
+      ]
     });
 
     return res.json(projects);
