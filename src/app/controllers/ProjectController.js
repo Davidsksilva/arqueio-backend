@@ -34,12 +34,13 @@ class ProjectController {
       return res.status(400).json({ error: 'Validation failed.' });
     }
 
-    const { name, description } = req.body;
+    const { name, description, cover_id } = req.body;
 
     const project = await Project.create({
       owner_id: req.userId,
       name,
       description,
+      cover_id,
     });
 
     return res.json(project);
