@@ -25,6 +25,7 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^6.0.0",
