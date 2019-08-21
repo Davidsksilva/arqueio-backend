@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import Project from '../models/Project';
+import File from '../models/File';
 import User from '../models/User';
 
 class ProjectController {
@@ -10,7 +11,14 @@ class ProjectController {
       where: { owner_id: req.userId },
       limit: 10,
       offset: (page - 1) * 20,
-      attributes: ['id', 'name', 'description'],
+      attributes: ['id', 'name', 'description', 'cover_id'],
+      include: [
+        {
+          model: File,
+          as: 'image',
+          attributes: ['name', 'path'],
+        },
+      ],
     });
 
     return res.json(projects);
@@ -26,12 +34,13 @@ class ProjectController {
       return res.status(400).json({ error: 'Validation failed.' });
     }
 
-    const { name, description } = req.body;
+    const { name, description, cover_id } = req.body;
 
     const project = await Project.create({
       owner_id: req.userId,
       name,
       description,
+      cover_id,
     });
 
     return res.json(project);

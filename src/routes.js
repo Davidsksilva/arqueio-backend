@@ -6,7 +6,7 @@ import SessionController from './app/controllers/SessionController';
 import ProjectController from './app/controllers/ProjectController';
 import FileController from './app/controllers/FileController';
 import PostController from './app/controllers/PostController';
-import GalleryController from './app/controllers/GaleryController';
+import GalleryController from './app/controllers/GalleryController';
 import TaskController from './app/controllers/TaskController';
 
 import authMiddleware from './app/middleware/auth';

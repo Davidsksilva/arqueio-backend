@@ -7,7 +7,7 @@
     "dev": "nodemon src/server.js",
     "lint": "eslint . --ignore-path .gitignore",
     "dist": "sucrase ./src -d ./dist --transforms imports",
-    "start": "pm2 start src/server.js -i 0",
+    "start": "pm2 start dist/server.js -i 0",
     "stop": "pm2 stop all",
     "restart": "pm2 restart src/server.js"
   },
@@ -25,6 +25,7 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^6.0.0",
