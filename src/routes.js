@@ -13,7 +13,8 @@ import authMiddleware from './app/middleware/auth';
 import multerConfig from './config/multer';
 
 const routes = new Router();
-const upload = multer(multerConfig);
+const upload = multer(multerConfig('images'));
+const uploadItalinea = multer(multerConfig('images_italinea'));
 
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
@@ -24,6 +25,11 @@ routes.post('/sessions', SessionController.store);
 routes.post('/posts', PostController.store);
 routes.get('/gallery', GalleryController.index);
 routes.post('/files', upload.single('file'), FileController.store);
+routes.post(
+  '/files-italinea',
+  uploadItalinea.single('file'),
+  FileController.store
+);
 
 routes.use(authMiddleware);
 
