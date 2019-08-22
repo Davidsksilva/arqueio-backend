@@ -9,13 +9,15 @@ class GaleryController {
     const { page = 1, tag = null } = req.query;
 
     const posts = await Post.findAll({
-      where: tag
-        ? {
-            tags: {
-              [Op.contains]: [tag],
-            },
-          }
-        : undefined,
+      where:
+        tag && tag != 'novidade'
+          ? {
+              tags: {
+                [Op.contains]: [tag],
+              },
+            }
+          : undefined,
+      order: tag === 'novidade' ? ['createdAt', 'DESC'] : undefined,
       limit: 10,
       offset: (page - 1) * 10,
       attributes: [
