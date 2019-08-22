@@ -10,7 +10,7 @@ class GaleryController {
 
     const posts = await Post.findAll({
       where:
-        tag && tag != 'novidade'
+        tag && tag !== 'novidade'
           ? {
               tags: {
                 [Op.contains]: [tag],
