@@ -6,7 +6,7 @@ import User from '../models/User';
 
 class GaleryController {
   async index(req, res) {
-    const { page = 1, tag = null } = req.query;
+    const { page = 1, tag = '' } = req.query;
 
     const posts = await Post.findAll({
       where: {
