@@ -11,6 +11,17 @@ class FileController {
 
     return res.json(file);
   }
+
+  async storeGallery(req, res) {
+    const { originalname: name, location: path } = req.file;
+
+    const file = await File.create({
+      name,
+      path,
+    });
+
+    return res.json(file);
+  }
 }
 
 export default new FileController();

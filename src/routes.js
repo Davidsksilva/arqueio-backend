@@ -8,7 +8,7 @@ import FileController from './app/controllers/FileController';
 import PostController from './app/controllers/PostController';
 import GalleryController from './app/controllers/GalleryController';
 import TaskController from './app/controllers/TaskController';
-
+import TagController from './app/controllers/TagController';
 import authMiddleware from './app/middleware/auth';
 import multerConfig from './config/multer';
 
@@ -22,6 +22,7 @@ routes.post('/sessions', SessionController.store);
 /**
  * Insecure endpoints
  */
+routes.get('/tags', TagController.index);
 routes.post('/posts', PostController.store);
 routes.get('/gallery', GalleryController.index);
 routes.post('/files', upload.single('file'), FileController.store);
