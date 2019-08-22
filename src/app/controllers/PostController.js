@@ -24,8 +24,10 @@ class PostController {
     );
 
     const { tags } = req.body;
-    for (let i = 0; i < tags.length; i + 1) {
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < tags.length; i++) {
       const tag = tags[i];
+
       const checkTag = await Tag.findOne({
         where: {
           name: tag,
@@ -36,12 +38,12 @@ class PostController {
         checkTag.images_count += 1;
 
         await checkTag.save();
+      } else {
+        await Tag.create({
+          name: tags,
+          images_count: 1,
+        });
       }
-
-      await Tag.create({
-        name: tags,
-        images_count: 1,
-      });
     }
 
     return res.json({
