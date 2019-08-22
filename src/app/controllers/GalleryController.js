@@ -4,14 +4,14 @@ import User from '../models/User';
 
 class GaleryController {
   async index(req, res) {
-    const { page = 1, tag = null } = req.query;
+    const { page = 1 } = req.query;
 
     const posts = await Post.findAll({
-      where: {
+      /* where: {
         tags: {
           $contains: [tag],
         },
-      },
+      }, */
       limit: 10,
       offset: (page - 1) * 10,
       attributes: ['id', 'title', 'description', 'owner_id', 'image_id'],
