@@ -40,7 +40,7 @@ class PostController {
         await checkTag.save();
       } else {
         await Tag.create({
-          name: tags,
+          name: tag,
           images_count: 1,
         });
       }
