@@ -17,7 +17,7 @@ class GaleryController {
               },
             }
           : undefined,
-      order: tag === 'novidade' ? ['createdAt', 'DESC'] : undefined,
+      order: tag === 'novidade' ? [['createdAt', 'DESC']] : undefined,
       limit: 10,
       offset: (page - 1) * 10,
       attributes: [
