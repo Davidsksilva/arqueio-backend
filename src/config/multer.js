@@ -22,21 +22,23 @@ import awsConfig from './aws';
 aws.config.update(awsConfig);
 const s3 = new aws.S3();
 
-export default {
-  storage: multerS3({
-    s3,
-    bucket: 'arqueio',
-    acl: 'public-read',
-    contentType: multerS3.AUTO_CONTENT_TYPE,
-    key: (req, file, cb) => {
-      crypto.randomBytes(16, (err, res) => {
-        if (err) return cb(err);
+export default function(folder) {
+  return {
+    storage: multerS3({
+      s3,
+      bucket: 'arqueio',
+      acl: 'public-read',
+      contentType: multerS3.AUTO_CONTENT_TYPE,
+      key: (req, file, cb) => {
+        crypto.randomBytes(16, (err, res) => {
+          if (err) return cb(err);
 
-        return cb(
-          null,
-          `images/${res.toString('hex')}${extname(file.originalname)}`
-        );
-      });
-    },
-  }),
-};
+          return cb(
+            null,
+            `${folder}/${res.toString('hex')}${extname(file.originalname)}`
+          );
+        });
+      },
+    }),
+  };
+}

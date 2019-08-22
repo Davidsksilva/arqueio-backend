@@ -8,17 +8,12 @@ import os
 
 
 def main():
-    i = 0
 
-    for filename in os.listdir(".../../imagens_italinea/"):
-        dst = "Hostel" + str(i) + ".jpg"
-        src = ".../../imagens_italinea/" + filename
-        dst = ".../../imagens_italinea/" + dst
-
-        # rename() function will
-        # rename all the files
-      //  os.rename(src, dst)
-       // i += 1
+    for filename in os.listdir("../../imagens_italinea/"):
+        dst = filename.split(' ')[0] + '.jpg'
+        src = "../../imagens_italinea/" + filename
+        dst = "../../imagens_italinea/" + dst
+        os.rename(src, dst)
 
 
 # Driver Code

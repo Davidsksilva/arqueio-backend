@@ -1,3 +1,5 @@
+// import {Op} from 'sequelize';
+
 import Post from '../models/Post';
 import File from '../models/File';
 import User from '../models/User';
@@ -9,7 +11,7 @@ class GaleryController {
     const posts = await Post.findAll({
       /* where: {
         tags: {
-          $contains: [tag],
+          [Op.contains]: [tag],
         },
       }, */
       limit: 10,
@@ -19,7 +21,7 @@ class GaleryController {
         {
           model: File,
           as: 'image',
-          attributes: ['name', 'path', 'url'],
+          attributes: ['name', 'path'],
         },
         {
           model: User,
