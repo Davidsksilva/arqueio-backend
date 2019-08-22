@@ -26,7 +26,7 @@ def main():
             filter(lambda x: (len(x) > 3) and (not '.jpg' in x) and (x in refTags), tags))
 
         payload = {'tags': tags,
-                   'title': 'Imagem da Italinea Torre', 'image_id': file_id}
+                   'title': 'Imagem da Italinea Torre', 'image_id': file_id, 'description': 'Imagem'}
         print(payload)
         response = requests.post(
             'http://18.191.111.54:1337/posts', data=payload)
