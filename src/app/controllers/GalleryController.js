@@ -16,7 +16,14 @@ class GaleryController {
       },
       limit: 10,
       offset: (page - 1) * 10,
-      attributes: ['id', 'title', 'description', 'owner_id', 'image_id'],
+      attributes: [
+        'id',
+        'title',
+        'description',
+        'owner_id',
+        'image_id',
+        'tags',
+      ],
       include: [
         {
           model: File,

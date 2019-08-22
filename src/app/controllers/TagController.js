@@ -25,7 +25,7 @@ class TagController {
   }
 
   async index(req, res) {
-    const tags = Tag.findAll({
+    const tags = await Tag.findAll({
       attributes: ['id', 'name', 'images_count'],
     });
 
