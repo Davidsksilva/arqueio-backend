@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import * as Yup from 'yup';
 
 import Post from '../models/Post';
@@ -8,8 +9,10 @@ class PostController {
   async store(req, res) {
     const schema = Yup.object().shape({
       title: Yup.string().required(),
-      tags: Yup.array().of(Yup.string()),
-      image_id: Yup.number(),
+      tags: Yup.array()
+        .of(Yup.string())
+        .required(),
+      image_id: Yup.number().required(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -21,8 +24,8 @@ class PostController {
     );
 
     const { tags } = req.body;
-
-    tags.forEach(async tag => {
+    for (let i = 0; i < tags.length; i + 1) {
+      const tag = tags[i];
       const checkTag = await Tag.findOne({
         where: {
           name: tag,
@@ -36,9 +39,10 @@ class PostController {
       }
 
       await Tag.create({
-        name: tag,
+        name: tags,
+        images_count: 1,
       });
-    });
+    }
 
     return res.json({
       title,
