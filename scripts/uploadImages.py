@@ -29,7 +29,7 @@ def main():
                    'title': 'Imagem da Italinea Torre', 'image_id': file_id, 'description': 'Imagem'}
         print(payload)
         response = requests.post(
-            'http://18.191.111.54:1337/posts', data=payload)
+            'http://18.191.111.54:1337/posts', json=payload)
 
         print(response)
 
