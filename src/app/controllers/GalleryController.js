@@ -36,6 +36,7 @@ class GaleryController {
         },
         {
           model: Furnisher,
+          as: 'furnisher',
           attributes: [
             'id',
             'name',
@@ -47,6 +48,7 @@ class GaleryController {
           include: [
             {
               model: File,
+              as: 'image',
               attributes: ['name', 'path'],
             },
           ],
