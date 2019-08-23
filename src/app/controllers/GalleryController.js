@@ -2,7 +2,7 @@ import { Op } from 'sequelize';
 
 import Post from '../models/Post';
 import File from '../models/File';
-import User from '../models/User';
+import Furnisher from '../models/Furnisher';
 
 class GaleryController {
   async index(req, res) {
@@ -35,9 +35,15 @@ class GaleryController {
           attributes: ['name', 'path'],
         },
         {
-          model: User,
-          as: 'owner',
-          attributes: ['id', 'name'],
+          model: Furnisher,
+          attributes: [
+            'id',
+            'name',
+            'description',
+            'email',
+            'contact',
+            'address',
+          ],
         },
       ],
     });
