@@ -6,10 +6,11 @@ import File from '../app/models/File';
 import Post from '../app/models/Post';
 import Task from '../app/models/Task';
 import Tag from '../app/models/Tag';
+import Furnisher from '../app/models/Furnisher';
 
 import databaseConfig from '../config/database';
 
-const models = [User, Project, File, Post, Task, Tag];
+const models = [User, Project, File, Post, Task, Tag, Furnisher];
 
 class Database {
   constructor() {

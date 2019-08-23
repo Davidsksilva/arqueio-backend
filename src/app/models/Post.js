@@ -17,6 +17,7 @@ class Post extends Model {
   static associate(models) {
     this.belongsTo(models.File, { foreignKey: 'image_id', as: 'image' });
     this.belongsTo(models.User, { foreignKey: 'owner_id', as: 'owner' });
+    this.belongsTo(models.Furnisher, { foreignKey: 'furnisher' });
   }
 }
 
