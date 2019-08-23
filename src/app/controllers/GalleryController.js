@@ -44,6 +44,12 @@ class GaleryController {
             'contact',
             'address',
           ],
+          include: [
+            {
+              model: File,
+              attributes: ['name', 'path'],
+            },
+          ],
         },
       ],
     });
