@@ -19,7 +19,7 @@ class Post extends Model {
     this.belongsTo(models.User, { foreignKey: 'owner_id', as: 'owner' });
     this.belongsTo(models.Furnisher, {
       foreignKey: 'furnisher',
-      as: 'furnisher',
+      as: 'sponsor',
     });
   }
 }
