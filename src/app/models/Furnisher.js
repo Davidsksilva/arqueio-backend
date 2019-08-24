@@ -20,7 +20,7 @@ class Furnisher extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'image', as: 'image' });
+    this.belongsTo(models.File, { foreignKey: 'image', as: 'imageUrl' });
   }
 }
 
