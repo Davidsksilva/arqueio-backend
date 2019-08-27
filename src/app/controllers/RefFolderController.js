@@ -1,8 +1,32 @@
+import * as Yup from 'yup';
 import RefFolder from '../models/RefFolder';
 import Reference from '../models/Reference';
 import File from '../models/File';
 
 class RefFolderController {
+  async store(req, res) {
+    const schema = Yup.object.shape({
+      name: Yup.string().required(),
+      description: Yup.string(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res
+        .status(400)
+        .json({ error: 'Erro na validação, insira um nome válido.' });
+    }
+
+    const { name, description } = req.body;
+
+    const folder = await RefFolder.create({
+      owner_id: req.userId,
+      name,
+      description,
+    });
+
+    return res.json(folder);
+  }
+
   async all(req, res) {
     const { page = 1 } = req.query;
 
