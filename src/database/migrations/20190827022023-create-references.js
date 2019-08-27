@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ref_folders', {
+    return queryInterface.createTable('references', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -9,6 +9,13 @@ module.exports = {
       },
       description: {
         type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      folder_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'ref_folders', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
         allowNull: true,
       },
       owner_id: {
@@ -37,6 +44,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('ref_folders');
+    return queryInterface.dropTable('references');
   },
 };
