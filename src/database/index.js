@@ -7,10 +7,21 @@ import Post from '../app/models/Post';
 import Task from '../app/models/Task';
 import Tag from '../app/models/Tag';
 import Furnisher from '../app/models/Furnisher';
-
+import Reference from '../app/models/Reference';
+import RefFolder from '../app/models/RefFolder';
 import databaseConfig from '../config/database';
 
-const models = [User, Project, File, Post, Task, Tag, Furnisher];
+const models = [
+  User,
+  Project,
+  File,
+  Post,
+  Task,
+  Tag,
+  Furnisher,
+  Reference,
+  RefFolder,
+];
 
 class Database {
   constructor() {

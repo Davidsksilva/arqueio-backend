@@ -12,6 +12,7 @@ class UserController {
       password: Yup.string()
         .required()
         .min(6),
+      furnisher: Yup.bool().required(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -23,12 +24,13 @@ class UserController {
     if (userExists) {
       return res.status(400).json({ error: 'E-mail addess already in use.' });
     }
-    const { id, name, email } = await User.create(req.body);
+    const { id, name, email, furnisher } = await User.create(req.body);
 
     return res.json({
       id,
       name,
       email,
+      furnisher,
     });
   }
 

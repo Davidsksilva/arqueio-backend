@@ -9,6 +9,9 @@ import PostController from './app/controllers/PostController';
 import GalleryController from './app/controllers/GalleryController';
 import TaskController from './app/controllers/TaskController';
 import TagController from './app/controllers/TagController';
+import ReferenceController from './app/controllers/ReferenceController';
+import RefFolderController from './app/controllers/RefFolderController';
+
 import authMiddleware from './app/middleware/auth';
 import multerConfig from './config/multer';
 
@@ -33,6 +36,11 @@ routes.post(
 );
 
 routes.use(authMiddleware);
+
+routes.post('/ref-folders', RefFolderController.store);
+routes.get('/ref-folders', RefFolderController.all);
+
+routes.post('/references', ReferenceController.store);
 
 routes.post('/projects/:id/tasks', TaskController.store);
 routes.get('/projects/:id/tasks', TaskController.index);
