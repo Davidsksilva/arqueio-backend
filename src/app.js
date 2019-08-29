@@ -11,7 +11,7 @@ class App {
     this.server = express();
     this.middlewares();
     this.routes();
-    this.server.use(cors());
+    this.server.use(cors({ origin: '*' }));
   }
 
   middlewares() {
