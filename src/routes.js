@@ -26,8 +26,7 @@ routes.post('/sessions', SessionController.store);
  * Insecure endpoints
  */
 routes.get('/tags', TagController.index);
-routes.post('/posts', PostController.store);
-routes.get('/posts', PostController.index);
+
 routes.get('/gallery', GalleryController.index);
 routes.post('/files', upload.single('file'), FileController.store);
 routes.post(
@@ -37,6 +36,9 @@ routes.post(
 );
 
 routes.use(authMiddleware);
+
+routes.get('/posts', PostController.index);
+routes.post('/posts', PostController.store);
 
 routes.post('/ref-folders', RefFolderController.store);
 routes.get('/ref-folders', RefFolderController.all);
