@@ -2,7 +2,7 @@
 import * as Yup from 'yup';
 
 import Post from '../models/Post';
-
+import File from '../models/File';
 import Tag from '../models/Tag';
 
 class PostController {
@@ -53,6 +53,26 @@ class PostController {
       owner_id,
       tags,
     });
+  }
+
+  async index(req, res) {
+    const { page = 1 } = req.query;
+
+    const posts = await Post.findAll({
+      where: { owner_id: req.userId },
+      limit: 10,
+      offset: (page - 1) * 20,
+      attributes: ['id', 'name', 'description', 'tags'],
+      include: [
+        {
+          model: File,
+          as: 'image',
+          attributes: ['name', 'path'],
+        },
+      ],
+    });
+
+    return res.json(posts);
   }
 }
 

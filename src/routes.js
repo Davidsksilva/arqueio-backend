@@ -27,6 +27,7 @@ routes.post('/sessions', SessionController.store);
  */
 routes.get('/tags', TagController.index);
 routes.post('/posts', PostController.store);
+routes.get('/posts', PostController.index);
 routes.get('/gallery', GalleryController.index);
 routes.post('/files', upload.single('file'), FileController.store);
 routes.post(
