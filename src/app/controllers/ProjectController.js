@@ -10,7 +10,7 @@ class ProjectController {
     const projects = await Project.findAll({
       where: { owner_id: req.userId },
       limit: 10,
-      offset: (page - 1) * 20,
+      offset: (page - 1) * 10,
       attributes: ['id', 'name', 'description', 'cover_id'],
       include: [
         {
