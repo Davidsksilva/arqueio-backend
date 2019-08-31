@@ -60,9 +60,9 @@ class PostController {
 
     const posts = await Post.findAll({
       where: { owner_id: req.userId },
-      limit: 10,
+      limit: 20,
       offset: (page - 1) * 20,
-      attributes: ['id', 'name', 'description', 'tags'],
+      attributes: ['id', 'title', 'description', 'tags'],
       include: [
         {
           model: File,
