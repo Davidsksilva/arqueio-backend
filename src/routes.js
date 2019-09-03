@@ -11,6 +11,7 @@ import TaskController from './app/controllers/TaskController';
 import TagController from './app/controllers/TagController';
 import ReferenceController from './app/controllers/ReferenceController';
 import RefFolderController from './app/controllers/RefFolderController';
+import ProductController from './app/controllers/ProductController';
 
 import authMiddleware from './app/middleware/auth';
 import multerConfig from './config/multer';
@@ -41,6 +42,11 @@ routes.get('/posts', PostController.index);
 routes.post('/posts', PostController.store);
 routes.get('/posts/:id', PostController.one);
 routes.get('/posts/:id', PostController.update);
+
+routes.get('/products', ProductController.index);
+routes.post('/products', ProductController.store);
+routes.get('/products/:id', ProductController.one);
+routes.get('/products/:id', ProductController.update);
 
 routes.post('/ref-folders', RefFolderController.store);
 routes.get('/ref-folders', RefFolderController.all);
