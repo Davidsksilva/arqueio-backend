@@ -19,9 +19,13 @@ class PostController {
       return res.status(400).json({ error: 'Validation failed.' });
     }
 
-    const { title, description, image_id, owner_id } = await Post.create(
-      req.body
-    );
+    const {
+      title,
+      description,
+      image_id,
+      owner_id,
+      products_ids,
+    } = await Post.create(req.body);
 
     const { tags } = req.body;
     // eslint-disable-next-line no-plusplus
@@ -52,6 +56,7 @@ class PostController {
       image_id,
       owner_id,
       tags,
+      products_ids,
     });
   }
 
@@ -73,6 +78,43 @@ class PostController {
     });
 
     return res.json(posts);
+  }
+
+  async one(req, res) {
+    const post = await Post.findByPk(req.params.id);
+
+    if (!post) {
+      return res.status(400).json({ error: 'Post does not exist.' });
+    }
+
+    return res.json(post);
+  }
+
+  async update(req, res) {
+    const post = await Post.findByPk(req.params.id);
+
+    /**
+     * Check if post exists
+     */
+
+    if (!post) {
+      return res.status(400).json({ error: 'Post does not exist.' });
+    }
+
+    if (post.owner_id !== req.userId) {
+      return res.status(401).json({ error: 'Permission denied.' });
+    }
+
+    const {
+      title,
+      description,
+      image_id,
+      owner_id,
+      tags,
+      products_ids,
+    } = await post.update(req.body);
+
+    return res.json(title, description, image_id, owner_id, tags, products_ids);
   }
 }
 

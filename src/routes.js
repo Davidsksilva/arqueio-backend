@@ -39,6 +39,8 @@ routes.use(authMiddleware);
 
 routes.get('/posts', PostController.index);
 routes.post('/posts', PostController.store);
+routes.get('/posts/:id', PostController.one);
+routes.get('/posts/:id', PostController.update);
 
 routes.post('/ref-folders', RefFolderController.store);
 routes.get('/ref-folders', RefFolderController.all);
@@ -47,6 +49,7 @@ routes.post('/references', ReferenceController.store);
 
 routes.post('/projects/:id/tasks', TaskController.store);
 routes.get('/projects/:id/tasks', TaskController.index);
+
 routes.post('/projects', ProjectController.store);
 routes.get('/projects', ProjectController.index);
 

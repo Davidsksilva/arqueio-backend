@@ -6,14 +6,16 @@ import Furnisher from '../models/Furnisher';
 
 class GaleryController {
   async index(req, res) {
-    const { page = 1, tag = null } = req.query;
+    const { page = 1, tag = null, filter = null } = req.query;
+
+    const arrayFilter = filter.split(' ');
 
     const posts = await Post.findAll({
       where:
-        tag && tag !== 'novidade'
+        (tag && tag !== 'novidade') || filter
           ? {
               tags: {
-                [Op.contains]: [tag],
+                [Op.contains]: filter ? arrayFilter : [tag],
               },
             }
           : undefined,

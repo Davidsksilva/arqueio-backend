@@ -7,6 +7,7 @@ class Post extends Model {
         title: Sequelize.STRING,
         description: Sequelize.TEXT,
         tags: Sequelize.ARRAY(Sequelize.STRING),
+        products_ids: Sequelize.ARRAY(Sequelize.INTEGER),
       },
       { sequelize }
     );
