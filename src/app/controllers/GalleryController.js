@@ -8,14 +8,14 @@ class GaleryController {
   async index(req, res) {
     const { page = 1, tag = null, filter = null } = req.query;
 
-    console.log(decodeURIComponent(filter).split(' '));
+    // console.log(decodeURIComponent(filter).split(' '));
 
     const posts = await Post.findAll({
       where:
         (tag && tag !== 'novidade') || filter
           ? {
               tags: {
-                [Op.contains]: filter
+                [Op.any]: filter
                   ? decodeURIComponent(filter).split(' ')
                   : [tag],
               },
