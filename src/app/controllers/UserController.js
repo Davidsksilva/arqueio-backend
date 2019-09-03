@@ -24,13 +24,16 @@ class UserController {
     if (userExists) {
       return res.status(400).json({ error: 'E-mail addess already in use.' });
     }
-    const { id, name, email, furnisher } = await User.create(req.body);
+    const { id, name, email, furnisher, furnisher_id } = await User.create(
+      req.body
+    );
 
     return res.json({
       id,
       name,
       email,
       furnisher,
+      furnisher_id,
     });
   }
 
