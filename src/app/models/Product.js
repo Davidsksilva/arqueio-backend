@@ -6,6 +6,7 @@ class Product extends Model {
       {
         name: Sequelize.STRING,
         specs: Sequelize.JSON,
+        description: Sequelize.TEXT,
       },
       {
         sequelize,
@@ -17,6 +18,7 @@ class Product extends Model {
 
   static associate(models) {
     this.belongsTo(models.File, { foreignKey: 'image', as: 'imageUrl' });
+    this.belongsTo(models.Furnisher, { foreignKey: 'furnisher' });
   }
 }
 
