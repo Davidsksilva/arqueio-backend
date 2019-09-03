@@ -13,7 +13,9 @@ class GaleryController {
         (tag && tag !== 'novidade') || filter
           ? {
               tags: {
-                [Op.contains]: filter ? filter.split(' ') : [tag],
+                [Op.contains]: filter
+                  ? decodeURIComponent(filter).split(' ')
+                  : [tag],
               },
             }
           : undefined,
