@@ -9,6 +9,7 @@ import Tag from '../app/models/Tag';
 import Furnisher from '../app/models/Furnisher';
 import Reference from '../app/models/Reference';
 import RefFolder from '../app/models/RefFolder';
+import Product from '../app/models/Product';
 import databaseConfig from '../config/database';
 
 const models = [
@@ -21,6 +22,7 @@ const models = [
   Furnisher,
   Reference,
   RefFolder,
+  Product,
 ];
 
 class Database {

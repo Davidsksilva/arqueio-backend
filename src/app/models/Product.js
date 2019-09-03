@@ -1,15 +1,11 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Furnisher extends Model {
+class Product extends Model {
   static init(sequelize) {
     super.init(
       {
         name: Sequelize.STRING,
-        description: Sequelize.TEXT,
-        email: Sequelize.STRING,
-        contact: Sequelize.STRING,
-        address: Sequelize.STRING,
-        social: Sequelize.JSON,
+        specs: Sequelize.JSON,
       },
       {
         sequelize,
@@ -21,8 +17,7 @@ class Furnisher extends Model {
 
   static associate(models) {
     this.belongsTo(models.File, { foreignKey: 'image', as: 'imageUrl' });
-    this.belongsTo(models.File, { foreignKey: 'user_id', as: 'user' });
   }
 }
 
-export default Furnisher;
+export default Product;
