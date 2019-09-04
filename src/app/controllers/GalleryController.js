@@ -15,7 +15,7 @@ class GaleryController {
         (tag && tag !== 'novidade') || filter
           ? {
               tags: {
-                [Op.any]: filter
+                [Op.overlap]: filter
                   ? decodeURIComponent(filter).split(' ')
                   : [tag],
               },
