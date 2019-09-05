@@ -7,25 +7,12 @@ import socketIO from 'socket.io/lib/socket';
 import routes from './routes';
 import './database';
 
-import User from './app/models/User';
-import ConversationController from './app/controllers/ConversationController';
-import MessageController from './app/controllers/MessageController';
-
 class App {
   constructor() {
     this.server = express();
 
     this.middlewares();
     this.routes();
-
-    /* this.server.use((req, res, next) => {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept'
-      );
-      next();
-    }); */
   }
 
   middlewares() {
