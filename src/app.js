@@ -3,7 +3,6 @@ import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import cors from 'cors';
-import socketIO from 'socket.io/lib/socket';
 import routes from './routes';
 import './database';
 
