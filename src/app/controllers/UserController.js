@@ -1,8 +1,29 @@
 import * as Yup from 'yup';
 
 import User from '../models/User';
+import File from '../models/File';
 
 class UserController {
+  async search(req, res) {
+    const { email } = req.query;
+
+    const user = await User.findAll({
+      where: {
+        email,
+      },
+      attributes: ['id', 'name', 'email'],
+      include: [
+        {
+          model: File,
+          as: 'image',
+          attributes: ['path'],
+        },
+      ],
+    });
+
+    res.json(user);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),

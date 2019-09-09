@@ -31,7 +31,7 @@ class User extends Model {
 
   static associate(models) {
     this.belongsTo(models.Furnisher, { foreignKey: 'furnisher_id' });
-    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'image' });
   }
 }
 
