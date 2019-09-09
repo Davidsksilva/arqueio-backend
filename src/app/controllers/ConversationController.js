@@ -73,8 +73,6 @@ class ConversationController {
         ],
       });
 
-      console.log(user);
-
       array.push({
         id: user.id,
         name: user.name,
