@@ -73,11 +73,13 @@ class ConversationController {
         ],
       });
 
+      console.log(user);
+
       array.push({
         id: user.id,
         name: user.name,
         email: user.email,
-        image: { path: user.image.path },
+        image: user.image ? { path: user.image.path } : null,
       });
     }
 
