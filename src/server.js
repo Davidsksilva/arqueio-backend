@@ -28,7 +28,6 @@ io.on('connection', socket => {
 
     const users = await ConversationController.searchContacts(id);
 
-    console.log(mobileSockets[id]);
     socket.emit('users', users);
   });
 
