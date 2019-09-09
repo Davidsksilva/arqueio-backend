@@ -10,6 +10,9 @@ import Furnisher from '../app/models/Furnisher';
 import Reference from '../app/models/Reference';
 import RefFolder from '../app/models/RefFolder';
 import Product from '../app/models/Product';
+import Message from '../app/models/Message';
+import Conversation from '../app/models/Conversation';
+
 import databaseConfig from '../config/database';
 
 const models = [
@@ -23,6 +26,8 @@ const models = [
   Reference,
   RefFolder,
   Product,
+  Message,
+  Conversation,
 ];
 
 class Database {

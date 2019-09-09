@@ -27,7 +27,7 @@ routes.post('/sessions', SessionController.store);
  * Insecure endpoints
  */
 routes.get('/tags', TagController.index);
-
+routes.get('/users/search', UserController.search);
 routes.get('/gallery', GalleryController.index);
 routes.post('/files', upload.single('file'), FileController.store);
 routes.post(
