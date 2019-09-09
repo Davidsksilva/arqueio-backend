@@ -33,7 +33,6 @@ class UserController {
       password: Yup.string()
         .required()
         .min(6),
-      furnisher: Yup.bool().required(),
     });
 
     if (!(await schema.isValid(req.body))) {
