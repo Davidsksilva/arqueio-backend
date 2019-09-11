@@ -47,6 +47,66 @@ class ConversationController {
     return array;
   }
 
+  async getLastMessage(conversationId) {
+    const message = await Message.findOne({
+      where: {
+        conversation: conversationId,
+      },
+      order: [['createdAt', 'DESC']],
+    });
+
+    const msg = {
+      // eslint-disable-next-line no-underscore-dangle
+      _id: message.id,
+      text: message.text,
+      createdAt: message.createdAt,
+      user: message.user,
+    };
+
+    return msg;
+  }
+
+  async getConversationsMessages(userId) {
+    const conversations = await Conversation.findAll({
+      where: {
+        [Op.or]: [
+          { user1_id: { [Op.eq]: userId } },
+          { user2_id: { [Op.eq]: userId } },
+        ],
+      },
+    });
+
+    const array = [];
+
+    for (let i = 0; i < conversations.length; i += 1) {
+      const contactId =
+        conversations[i].user1_id === userId
+          ? conversations[i].user2_id
+          : conversations[i].user1_id;
+      // const lastMsg = await this.getLastMessage(conversations[i].id);
+      const messages = await this.getMessages(conversations[i].id);
+
+      const user = await User.findByPk(contactId, {
+        attributes: ['id', 'name', 'email'],
+        include: [
+          {
+            model: File,
+            as: 'avatar',
+            attributes: ['path'],
+          },
+        ],
+      });
+
+      array.push({
+        id: contactId,
+        user,
+        messages,
+      });
+    }
+
+    return array;
+  }
+
   async searchContacts(id) {
     const conversations = await Conversation.findAll({
       where: {
@@ -67,7 +127,7 @@ class ConversationController {
         include: [
           {
             model: File,
-            as: 'image',
+            as: 'avatar',
             attributes: ['path'],
           },
         ],
@@ -77,7 +137,7 @@ class ConversationController {
         id: user.id,
         name: user.name,
         email: user.email,
-        image: user.image ? { path: user.image.path } : null,
+        image: user.avatar ? { path: user.avatar.path } : null,
       });
     }
 

@@ -49,9 +49,16 @@ io.on('connection', socket => {
     socket.emit('priorMessages', payload);
   });
 
+  socket.on('chats', async user => {
+    const messages = await ConversationController.getConversationsMessages(
+      user.id
+    );
+
+    socket.emit('allPriorMessages', messages);
+  });
+
   socket.on('message', async ({ text, sender, receiver }) => {
     const message = await MessageController.create(text, sender, receiver);
-
     const payload = {
       users: [sender.id, receiver.id],
       message: {
@@ -61,7 +68,9 @@ io.on('connection', socket => {
         user: {
           _id: sender.id,
           name: sender.name,
+          avatar: sender.avatar,
         },
+        read: false,
       },
     };
 
