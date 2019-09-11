@@ -96,6 +96,21 @@ class UserController {
 
     return res.json({ id, name, email });
   }
+
+  async getUserData(userId) {
+    const user = await User.findByPk(userId, {
+      attributes: ['id', 'name', 'email'],
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['path'],
+        },
+      ],
+    });
+
+    return user;
+  }
 }
 
 export default new UserController();

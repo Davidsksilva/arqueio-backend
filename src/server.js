@@ -2,6 +2,7 @@ import app from './app';
 import User from './app/models/User';
 import ConversationController from './app/controllers/ConversationController';
 import MessageController from './app/controllers/MessageController';
+import UserController from './app/controllers/UserController';
 
 const server = require('http').Server(app);
 
@@ -39,10 +40,13 @@ io.on('connection', socket => {
 
     const messages = await ConversationController.getMessages(conversation.id);
 
+    const user = await UserController.getUserData(users.receiver.id);
+
     const payload = {
       messages,
       user: {
         id: users.receiver.id,
+        user,
       },
     };
 
