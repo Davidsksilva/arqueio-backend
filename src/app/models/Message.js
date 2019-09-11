@@ -6,6 +6,7 @@ class Message extends Model {
       {
         text: Sequelize.STRING,
         user: Sequelize.JSON,
+        data: Sequelize.JSON,
       },
       {
         sequelize,
