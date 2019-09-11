@@ -3,7 +3,7 @@ import Message from '../models/Message';
 import Conversation from '../models/Conversation';
 
 class MessageController {
-  async create(text, sender, receiver) {
+  async create(text, sender, receiver, data = null) {
     const conversation = await Conversation.findCreateFind({
       where: {
         user1_id: {
@@ -17,6 +17,7 @@ class MessageController {
 
     const message = await Message.create({
       text,
+      data,
       user: {
         _id: sender.id,
         name: sender.name,

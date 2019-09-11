@@ -61,8 +61,13 @@ io.on('connection', socket => {
     socket.emit('allPriorMessages', messages);
   });
 
-  socket.on('message', async ({ text, sender, receiver }) => {
-    const message = await MessageController.create(text, sender, receiver);
+  socket.on('message', async ({ text, sender, receiver, data }) => {
+    const message = await MessageController.create(
+      text,
+      sender,
+      receiver,
+      data
+    );
     const payload = {
       users: [sender.id, receiver.id],
       message: {
