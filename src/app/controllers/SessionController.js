@@ -49,7 +49,7 @@ class SessionController {
         email,
         furnisher,
         furnisher_id,
-        avatar: avatar.path,
+        avatar: avatar ? avatar.path : null,
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
