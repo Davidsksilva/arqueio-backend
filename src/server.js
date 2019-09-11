@@ -74,6 +74,7 @@ io.on('connection', socket => {
         _id: message.id,
         text: message.text,
         createdAt: message.createdAt,
+        data: message.data,
         user: {
           _id: sender.id,
           name: sender.name,
