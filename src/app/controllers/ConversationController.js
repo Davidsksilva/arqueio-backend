@@ -41,6 +41,7 @@ class ConversationController {
       _id: message.id,
       text: message.text,
       createdAt: message.createdAt,
+      data: message.data,
       user: message.user,
     }));
 
@@ -60,6 +61,7 @@ class ConversationController {
       _id: message.id,
       text: message.text,
       createdAt: message.createdAt,
+      data: message.data,
       user: message.user,
     };
 
