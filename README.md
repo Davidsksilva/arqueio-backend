@@ -5,14 +5,15 @@ Backend source code from Arqueio, a discontinued architecture management platfor
 - User registration and authentication;
 - Database operations;
 - File upload to AWS S3;
+- Automatic deploy through gitlab cli.
 
 Some technologies used in the project:
 
-- Express: web framework
-- Postgres: store data
-- Sequelize ORM: interact with database
-- Multer: to handle file upload
-- AWS S3: to store files
+- Express: web framework;
+- Postgres: store data;
+- Sequelize ORM: interact with database;
+- Multer: to handle file upload;
+- AWS S3: to store files.
 
 API utilizada para armazenar/resgatar informações do banco de dados. Também contém regra de negócio. 
 
