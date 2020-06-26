@@ -1,6 +1,18 @@
 # Arqueio Backend
 
-Backend project from Arqueio, a failed startup that I helped building.
+Backend source code from Arqueio, a discontinued architecture management platform startup that I was part of. It might be a useful reference material for someone that wants to build a backend in Node.js that includes:
+
+- User registration and authentication;
+- Database operations;
+- File upload to AWS S3;
+
+Some technologies used in the project:
+
+- Express: web framework
+- Postgres: store data
+- Sequelize ORM: interact with database
+- Multer: to handle file upload
+- AWS S3: to store files
 
 API utilizada para armazenar/resgatar informações do banco de dados. Também contém regra de negócio. 
 
